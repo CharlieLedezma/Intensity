@@ -1,0 +1,202 @@
+Github y Gitlab son redes sociales donde se comparte código usando Git
+
+Visualizar la configuración global (user, e-mail)
+$ git config --list
+
+
+- Básicamente se usan estos comandos
+1. git init
+2. git status
+3. git add
+4. git commit
+	git commit -m "comentario": descripcion corta
+5. git restore <file>:   ????
+
+git --help
+git <tab><tab>
+
+Subir los archivos de un proyecto a Github por medio del terminal
+git push origin master
+git remote add origin "gitlink"
+git remote -v
+git add .			-> Adiciona todos los archivos de la carpeta al repositorio
+git push origin master
+
+branch master
+
+*Visualizar branch en uso
+$ git branch
+
+
+**************************************************************************************
+BRANCH
+**************************************************************************************
+* Crear un nuevo branch
+$ git branch <name-of-branch>
+
+* Saltar a otro branch
+$ git checkout <name-of-branch>
+
+
+* Verificar todos los branch que pueden estar ocultos
+$ git checkout <TAB>
+**************************************************************************************
+----
+**************************************************************************************
+
+$ ll
+$
+$ ls -l
+$ gedit .gitconfig
+$ git mergetool --tool-help
+
+sudo apt install gitg gitk
+sudo apt install meld		<--  instalar después
+
+*Remover un proyecto local (origin) ya asociado a un repositorio
+$git remote remove origin
+
+*Verificar la URL remota a la que está conectada el projecto
+$ git remote -v
+ó
+$ git remote show origin
+
+
+* Probar si se tiene una conexión ssh
+$  ssh -T git@github.com
+
+* Adicionar un repositorio local a un repositorio remoto
+$ git remote add origin REMOTE-URL
+
+*******************************************************
+AUTENTICAR CON CLAVE SSH 
+*******************************************************
+https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/
+https://www.youtube.com/watch?v=w22huz8lFsA
+
+CREAR UNA CLAVE SSH 
+* Es un protocolo
+* Para usar una clave SSH( Security Shell) con Git, primero se debe crear un par de
+claves en el pc, una privada y una pública, compartiendo la pública con el servicio 
+que se quiera conectar
+
+Se considera una buena práctica tener un par de claves pública y privada por dispositivo
+
+**Las claves SSH tienen dos partes: una clave privada y una pública. La clave
+pública la podemos copiar a todos los equipos en los que nos queramos
+conectar. La clave privada se debe mantener protegida
+Después de creada, la llave privada se guarda en /home/robotic/.shh/id_rsa 
+y la clave pública se guarda en /home/robotic/.shh/id_rsa.pub
+
+* Si previamente se ha creado una clave SSH, el comando <ssh-keygen> preguntará si se quiere
+sobreescribir la clave existente. En dicho caso es mejor crear una clave de nombre personalizado
+usando el flag -f seguido de la ruta a la clave con el nombre personalizado
+
+0) Ubicar el archivo .ssh
+$ ls -la .ssh/
+
+1) Verificar si se tiene una clave SSH
+	$ ssh-add -l
+	The agent has no identities.
+	
+2) Pasar a la carpeta oculta
+ 	cd
+ 	
+3) Crear la clave 	 
+	$ ssh-keygen -t rsa -b 4096 -C "lcledezma@gmail.com"
+				ó
+	$ ssh-keygen -t rsa -b 2048 -C "lcledezma@gmail.com"
+				ó
+	$ ssh-keygen -t ed25519 -C "[info]" 
+	
+   La flag -t permite especificar el tipo de clave
+      
+4) Enter file in which to save the key (/home/robotic/.ssh/id_ed25519): <Enter> 
+   Para aceptar el lugar por defecto, o puede usar algo personalizado, así
+   
+
+5) <Enter> para dejar genérico el nombre de la clave privada(o dé una clave si así lo requiere)
+   Key: pythonExcercises
+   Password KeyGit_ParaPython:galaxy25
+   
+   Key: rbim
+
+6) <Enter> para dejar en blanco la passphrase para la clave pública
+
+7) Visualizar el contenido de su clave pública
+	$ gedit .ssh/id_rsa.pub
+
+8) Copie el contenido del texto del archivo en el clipboard porque
+se va a necesitar después.
+$ pbcopy < ~/.ssh/id_rsa.pub
+
+9) Asegurarse que el agente SSH esté corriendo en el fondo
+	$ eval "$(ssh-agent -s)"
+	
+10) Adicione la clave ssh privada (la que no tiene extensión) al ssh-agent 
+	$ ssh-add ~/.ssh/id_ed25519
+
+*******************************************************
+		  COMANDOS SSH 
+*******************************************************
+*Desplegar la ayuda
+$ ssh-keygen help
+
+
+**Verificar el archivo 
+.ssh/config
+
+**Define un id (??)
+Es para cuando se le da un nombre a la clave, diferente del estadar
+$ eval $(ssh-agent -s)
+
+Remover todas las claves para las sesión ssh-agent actual
+$ ssh-add -D
+
+*******************************************************
+ADICIONAR LA CLAVE SSH A LA CUENTA GITHUB
+*******************************************************
+
+7) Entrar a la cuenta en Github
+
+8) Haciendo click en el avatar ->Settings
+
+9) Seleccine -> SSH and GPG keys
+
+10) Click en -> New SSK Key
+
+11) De un título en el campo <Title>
+
+12) Copie en el campo <Key> el texto del clipboard
+
+13) Click en -> Add SSH Key
+
+
+
+*******************************************************
+AUTENTICAR CON TOKEN
+*******************************************************
+touch ?  (https://www.youtube.com/watch?v=bc3_FL9zWWs   9:41)
+
+
+
+
+
+*******************************************************
+CONEXIÓN ENTRE PCs VIA SSH (???)
+*******************************************************
+EXTRAS
+
+https://www.youtube.com/watch?v=6Vbsv7lZWE0
+- Copiar la llave pública al servidor
+$ ssh-copy-id <user>@ip
+$ ssh <user>@ip
+
+
+
+*******************************************************
+GIThub CON VSCODE
+*******************************************************
+
+
+
