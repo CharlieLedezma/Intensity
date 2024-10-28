@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-xpoints = np.array([1, 8])
+#Modifico las coordenadas
+xpoints = np.array([0, -8])
 ypoints = np.array([3, 10])
 
 plt.plot(xpoints, ypoints)
